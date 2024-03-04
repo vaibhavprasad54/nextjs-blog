@@ -15,7 +15,7 @@ export const AuthProvider = ({children}) => {
 
 export const TanstackProvider = ({children}) => {
 
-    const [queryClient] = useState(new QueryClient());
+    const [queryClient] = useState(()=> new QueryClient());
     return (
         <QueryClientProvider client={queryClient}>
             <ReactQueryDevtools initialIsOpen={false} />
