@@ -11,7 +11,7 @@ export const Toolbar = ({ editor }) => {
     }
 
     return (
-        <div className="bg-[#e3d9ff] rounded-md">
+        <div className="bg-[#1b1b1f] rounded-md">
         <Toggle size="sm" pressed={editor.isActive("heading")} onPressedChange={() => editor.chain().focus().toggleHeading({ level: 2 }).run()} className="selection:bg-red" >
             <Heading2 className="h-4 w-4" />
         </Toggle>

@@ -1,20 +1,20 @@
 import React from 'react'
 import { Oval } from "react-loader-spinner";
 
-const Loader = () => {
+const Loader = ({ height, width }) => {
   return (
         <div className='flex items-center flex-col'>
           <Oval
           visible={true}
-          height="60"
-          width="60"
-          color="#8c6bec"
+          height={height}
+          width={width}
+          color="#7770e0"
           secondaryColor="#d5c8ff"
           ariaLabel="oval-loading"
-          wrapperStyle={{ marginBottom: "1rem" }}
+          // wrapperStyle={{ marginBottom: "1rem" }}
           wrapperClass=""
         />
-        <p>Loading...</p>
+        {/* <p>Loading...</p> */}
         </div>
   )
 }

@@ -25,12 +25,10 @@ import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react"; 
 import Link from "next/link";
 import { FaSun } from "react-icons/fa6";
-import { ThemeContext } from "@/app/context/ThemeContext";
 
 const Nav = () => {
 
   const {data: session} = useSession();
-  const { darkMode, toggleDarkMode } = useContext(ThemeContext);
   const [theme, setTheme] = useState("light");
 
   console.log("Session Data:", session);
@@ -59,8 +57,8 @@ const Nav = () => {
   }
 
   return (
-    <nav className={`${darkMode ? 'bg-slate-700' : 'bg-white'} shadow-sm sticky top-0 z-50`}>
-      <div className="nav-container flex items-center justify-between px-6 sm:px-12 py-1">
+    <nav className= "bg-[#181819] shadow-sm sticky top-0 z-50 bg-opacity-70 backdrop-blur-md">
+      <div className="nav-container flex items-center justify-between px-6 sm:px-12 py-2">
         <div className="flex items-center">
           <Link href="/" className="logo flex items-center justify-start gap-2">
             <Image
@@ -68,7 +66,7 @@ const Nav = () => {
               alt="image"
               className="w-10 h-11 sm:w-11 sm:h-11 p-[0.4rem]"
             />
-            <p className="text-xl font-semibold text-[#8c6bec]">Blogs</p>
+            <p className="text-xl font-semibold text-slate-100">Blogs</p>
           </Link>
         </div>
   
@@ -77,7 +75,7 @@ const Nav = () => {
         <DropdownMenu className="cursor-pointer -mt-5 ">
             <DropdownMenuTrigger className="user-info flex items-center justify-start gap-3 cursor-pointer outline-none">
               <Image src={userImage} alt="image" className="w-9 h-9" />
-              <p className="text-xl font-semibold text-[#8c6bec]"> {session?.user?.userName} </p>
+              <p className="text-xl font-semibold text-slate-100"> {session?.user?.userName} </p>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="ml-4 w-44">
               {/* <DropdownMenuLabel>My Account</DropdownMenuLabel>
@@ -94,31 +92,31 @@ const Nav = () => {
           </DropdownMenu>
         </div>
 
-        <div className="hidden md:flex dark-mode-btn cursor-pointer" onClick={changeTheme}>
+        {/* <div className="hidden md:flex dark-mode-btn cursor-pointer" onClick={changeTheme}>
           <div className={`btn-background relative flex items-center justify-between px-1 w-12 h-6 rounded-[20px] shadow-md ${theme == "dark" ? 'bg-slate-800' : 'bg-orange-400'}`}>
             <div className={`btn-ball w-4 h-4 rounded-full bg-white ${theme == "dark" ? 'ml-6' : 'ml-0'}`}></div>
             {theme == "light" && <FaSun className="text-white text-xs mr-1" />}
             {theme == "dark" && <BsFillMoonStarsFill className="text-white text-xs ml-1 absolute top-[6px]" />}
           </div>
-        </div>
+        </div> */}
         </div>
 
         <div className="hamburger-menu flex lg:hidden">
           <RxHamburgerMenu
-            className="ham-icon w-7 h-7 cursor-pointer"
+            className="ham-icon w-7 h-7 cursor-pointer text-slate-200"
             onClick={openMobileMenu}
           />
           <IoMdClose
-            className="close-icon w-7 h-7 cursor-pointer hidden"
+            className="close-icon w-7 h-7 cursor-pointer hidden text-slate-200"
             onClick={closeMobileMenu}
           />
         </div>
-        <div className="menu-mobile flex flex-col items-start justify-between absolute top-14 -right-60 rounded-[8px] bg-slate-200 shadow-lg z-50 h-[43rem] py-5 px-10 w-60 pb-10">
+        <div className="menu-mobile flex flex-col items-start justify-between absolute top-14 -right-60 rounded-[8px] bg-[#1b1b1f] shadow-lg z-50 h-[40rem] py-5 px-10 w-60 pb-10">
 
           <DropdownMenu className="cursor-pointer -mt-5">
             <DropdownMenuTrigger className="user-info flex items-center justify-start gap-3 cursor-pointer outline-none">
               <Image src={userImage} alt="image" className="w-11 h-11" />
-              <p className="text-xl font-semibold text-[#23528e]">Vaibhav</p>
+              <p className="text-xl font-semibold text-slate-100"> {session?.user?.userName} </p>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="ml-[7rem] -mt-3">
               {/* <DropdownMenuLabel>My Account</DropdownMenuLabel>
@@ -130,13 +128,13 @@ const Nav = () => {
             </DropdownMenuContent>
           </DropdownMenu>
           
-          <div className="flex dark-mode-btn cursor-pointer" onClick={changeTheme}>
+          {/* <div className="flex dark-mode-btn cursor-pointer" onClick={changeTheme}>
           <div className={`btn-background relative flex items-center justify-between px-1 w-12 h-6 rounded-[20px] shadow-md ${theme == "dark" ? 'bg-slate-800' : 'bg-orange-400'}`}>
             <div className={`btn-ball w-4 h-4 rounded-full bg-white ${theme == "dark" ? 'ml-6' : 'ml-0'}`}></div>
             {theme == "light" && <FaSun className="text-white text-xs mr-1" />}
             {theme == "dark" && <BsFillMoonStarsFill className="text-white text-xs ml-1 absolute top-[6px]" />}
           </div>
-        </div>
+        </div> */}
 
           {/* <div className="user-info flex items-center justify-start gap-3 cursor-pointer">
             <Image src={userImage} alt="image" className="w-11 h-11" />

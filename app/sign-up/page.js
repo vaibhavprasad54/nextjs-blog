@@ -10,7 +10,7 @@ import Link from "next/link";
 import axios from "axios";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
-import { authOptions } from "../../api/auth/[...nextauth]/route";
+// import { authOptions } from "../../api/auth/[...nextauth]/route";
 
 
 const SignUp = async() => {
@@ -59,7 +59,7 @@ const SignUp = async() => {
   return (
     <div className="login-section w-full flex items-center justify-center">
       <div className="left-bg w-full sm:w-1/2 bg-blue-800 sm:h-screen h-[60rem] z-0"></div>
-      <div className="right-bg w-full hidden sm:flex sm:w-1/2 bg-slate-200 sm:h-screen h-[60rem] z-0"></div>
+      <div className="right-bg w-full hidden sm:flex sm:w-1/2 bg-[#0a0a0c] sm:h-screen h-[60rem] z-0"></div>
 
       <div className="login-container sm:w-4/5 absolute bg-white bg-opacity-10 z-50 rounded-[20px] shadow-lg flex flex-col sm:flex-row items-center justify-center mx-4 max-w-5xl">
         <div className="animation-section sm:w-1/2 flex flex-col items-start justify-center gap-10 rounded-l-[15px] p-10 relative">
@@ -79,13 +79,13 @@ const SignUp = async() => {
           </div>
         </div>
 
-        <div className="login-area sm:w-1/2 bg-white sm:rounded-r-[15px] opacity-90 p-3 sm:p-10 mb-4 sm:mb-0">
+        <div className="login-area sm:w-1/2 bg-[#1b1b1f] sm:rounded-r-[15px] opacity-90 p-3 sm:p-10 mb-4 sm:mb-0">
           <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col items-center justify-center p-10">
             <div className="form-header text-center pb-5">
-              <h2 className="text-2xl sm:text-[2rem] font-bold">Get Started</h2>
-              <p className="m-0 p-0 text-sm sm:text-base text-gray-700">
+              <h2 className="text-2xl sm:text-[2rem] font-bold text-slate-100">Get Started</h2>
+              <p className="m-0 p-0 text-sm sm:text-base text-slate-300">
                 Already have an account ?{" "}
-                <Link href="./sign-in" className="text-red-500">Sign in</Link>
+                <Link href="./sign-in" className="text-red-400">Sign in</Link>
               </p>
             </div>
             <div className="form-content flex flex-col items-center justify-center pt-4 gap-5 w-full">

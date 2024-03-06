@@ -10,10 +10,6 @@ export async function POST(req, res){
 
     try {
         const {userId, searchQuery, category} = await req.json();
-        console.log("Reqqqqq:", userId);
-        console.log("Req2:", searchQuery);
-        console.log("Req3:", category);
-        const searchText = searchQuery;
 
         if(!userId){
           return NextResponse.json({ status: 400, body: { error: "User id is mandatory." } })

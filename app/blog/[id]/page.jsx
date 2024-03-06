@@ -38,7 +38,7 @@ const ViewBlog = async ({ params }) => {
               style={{
                 mixBlendMode: "multiply",
                 background:
-                  "linear-gradient(0deg, rgba(0,0,0,0.90) 0%, rgba(0,0,0,0.5) 20%, rgba(0,0,0,0.2) 35%, rgba(0,0,0,0) 65%, rgba(0,0,0,0) 100%)",
+                  "linear-gradient(0deg, rgba(0,0,0,0.90) 0%, rgba(0,0,0,0.6) 20%, rgba(0,0,0,0.2) 35%, rgba(0,0,0,0) 65%, rgba(0,0,0,0) 100%)",
               }}
             ></div>
           </div>
@@ -61,16 +61,11 @@ const ViewBlog = async ({ params }) => {
           </div>
         </div>
 
-        
-
         <div className="blog-desc-section mt-5 md:mt-10 w-full flex flex-col items-center justify-center">
-        <div className="action-btns flex items-center justify-start w-full md:w-[85%] gap-3 pl-0 pt-0 pb-3">
-            <FaHeart className="text-2xl text-red-400 hover:text-red-600 transition-colors duration-50 ease-in-out cursor-pointer" />
-            <RiEditBoxFill className="text-2xl text-[#8c6bec] hover:text-[#7d5fd8] transition-colors duration-50 ease-in-out cursor-pointer" />
-            <MdDelete className="text-[25px] text-[#8c6bec] hover:text-[#7d5fd8] transition-colors duration-50 ease-in-out cursor-pointer" />
-        </div>
           <div className="blog-desc w-full md:w-[85%]">
-            <p className="px-1">{blog?.blogDesc}</p>
+            <p className="px-1 text-gray-300" dangerouslySetInnerHTML={{ __html: blog.blogDesc }}>
+              {/* {blog?.blogDesc} */}
+            </p>
           </div>
         </div>
       </div>

@@ -11,7 +11,7 @@ const TipTap = ({ onChange }) => {
         content: '',
         editorProps: {
             attributes: {
-                class: "outline-none bg-[#fff] text-base sm:text-lg py-3 my-1 font-semibold px-5 w-full h-40 rounded-[7px] border-2 border-slate-200"
+                class: "outline-none bg-[#1b1b1f] text-base sm:text-lg py-3 my-2 font-semibold px-5 w-full h-40 rounded-[7px] border-[1px] border-[#7770e02f]"
             },
         },
         onUpdate({ editor }){
@@ -21,7 +21,7 @@ const TipTap = ({ onChange }) => {
     })
 
   return (
-    <div>
+    <div className='mt-2'>
         <Toolbar editor={editor} />
         <EditorContent editor={editor} />
     </div>

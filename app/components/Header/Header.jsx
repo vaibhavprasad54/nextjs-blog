@@ -3,11 +3,14 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrig
 import { FaSearch } from "react-icons/fa";
 import { categories } from "../categories";
 import CreateBtn from "../CreateBtn/CreateBtn";
+import BlogForm from "../Form/BlogForm";
 
 const Header = ({ onSearch, onCategorySelect }) => {
 
-    const [searchInput, setSearchInput] = useState('');
-    const [blogCategory, setBlogCategory] = useState('');
+    const [isOpen, setIsOpen] = useState(false);
+
+    const handleOpenModal = () => setIsOpen(true);
+    const closeModal = () => setIsOpen(false);
 
     const handleInputChange = (e) => {
         const text = e.target.value;
@@ -34,7 +37,6 @@ const Header = ({ onSearch, onCategorySelect }) => {
       }
 
 
-
   return (
     <div className="header flex flex-col w-full">
       <div className="header-top flex flex-col-reverse md:flex-row items-start md:items-center justify-between w-full pb-7">
@@ -45,18 +47,21 @@ const Header = ({ onSearch, onCategorySelect }) => {
               placeholder="Search Article"
               // value={searchInput}
               onChange={debouncedSearch}
-              className="pl-11 pr-4 py-2 rounded-[10px] border-2 border-gray-200"
+              className="pl-11 pr-4 py-2 rounded-[10px] text-slate-100 border-[1px] border-gray-600 bg-[#232324] focus:outline-1 focus:outline-gray-500"
             />
             <FaSearch className="absolute top-[0.85rem] left-4 text-gray-500" />
           </div>
         </div>
-        <CreateBtn />
+        <div>
+          <CreateBtn handleOpenModal={handleOpenModal}/>
+          <BlogForm open={isOpen} editModal={false} closeModal={closeModal} />
+        </div>
       </div>
       
       
-      <div className="sub-header flex-col md:flex-row items-end justify-between gap-2 sm:gap-5 w-full">
+      <div className=" flex flex-col md:flex-row md:items-end justify-between gap-2 sm:gap-5 w-full">
         <div className="left-options flex items-center justify-start gap-2 sm:gap-5">
-          <p className="text-lg flex font-bold text-[#8c6bec] cursor-pointer hover:text-gray-600">
+          <p className="text-lg flex font-bold text-[#7770e0] cursor-pointer hover:text-gray-600">
             Latest <span className="hidden sm:flex pl-2">Article</span>
           </p>
           <p className="text-base font-bold text-gray-400 cursor-pointer hover:text-gray-600">

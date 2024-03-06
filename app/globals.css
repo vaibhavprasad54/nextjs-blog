@@ -78,14 +78,15 @@
 body{
   overflow-x: hidden;
   /* overflow-y: hidden; */
-  background-color: #fbfaff;
+  /* background-color: #fbfaff; */
+  background-color: #0a0a0c;
 }
 
 input[type="file"]::-webkit-file-upload-button {
   /* Target the "Choose File" button itself */
   background-color: #f8f8f8;
-  border: 1px solid #8c6bec;
-  color: #8c6bec;
+  border: 1px solid #7770e0;
+  color: #7770e0;
   padding: 4px 20px;
   border-radius: 5px;
   cursor: pointer;
@@ -104,7 +105,7 @@ input[type="file"]::-webkit-file-upload-button {
 }
 
 ::-webkit-scrollbar-thumb{
-  background-color: #8c6bec;
+  background-color: #7770e0;
   border-radius: 4px;
 
 }

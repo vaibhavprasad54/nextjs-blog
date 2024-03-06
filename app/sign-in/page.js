@@ -56,14 +56,14 @@ const SignIn = () => {
 
   return (
     <div className="login-section w-full flex items-center justify-center">
-      <div className="left-bg w-full sm:w-1/2 bg-[#8c6bec] sm:h-screen h-[60rem] z-0"></div>
-      <div className="right-bg w-full hidden sm:flex sm:w-1/2 bg-slate-200 sm:h-screen h-[60rem] z-0"></div>
+      <div className="left-bg w-full sm:w-1/2 bg-[#7770e0] sm:h-screen h-[60rem] z-0"></div>
+      <div className="right-bg w-full hidden sm:flex sm:w-1/2 bg-[#0a0a0c] sm:h-screen h-[60rem] z-0"></div>
 
       <div className="login-container sm:w-4/5 absolute bg-white bg-opacity-15 z-50 rounded-[20px] shadow-lg flex flex-col sm:flex-row items-center justify-center mx-4 max-w-5xl">
         <div className="animation-section sm:w-1/2 flex flex-col items-start justify-center gap-10 rounded-l-[15px] p-10 relative">
-          <div className="circle absolute bg-[#8c6bec] opacity-75 w-20 h-20 rounded-full -top-16"></div>
-          <div className="triangle absolute bg-[#8c6bec] opacity-75 w-8 h-8 rounded-full top-32 right-32"></div>
-          <div className="triangle absolute bg-[#8c6bec] opacity-75 w-8 h-8 rounded-full top-72 left-48"></div>
+          <div className="circle absolute bg-[#7770e0] opacity-75 w-20 h-20 rounded-full -top-16"></div>
+          <div className="triangle absolute bg-[#7770e0] opacity-75 w-8 h-8 rounded-full top-32 right-32"></div>
+          <div className="triangle absolute bg-[#7770e0] opacity-75 w-8 h-8 rounded-full top-72 left-48"></div>
           <div className="text-area">
             <h2 className="text-2xl sm:text-3xl font-bold text-white">
               Scribble your thoughts <br /> on web!
@@ -77,19 +77,19 @@ const SignIn = () => {
           </div>
         </div>
 
-        <div className="login-area sm:w-1/2 bg-white rounded-r-[15px] opacity-90 p-3 sm:p-10 mb-4 sm:mb-0">
+        <div className="login-area sm:w-1/2 bg-[#1b1b1f] rounded-r-[15px] opacity-90 p-3 sm:p-10 mb-4 sm:mb-0">
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="flex flex-col items-center justify-center p-10"
           >
             <div className="form-header text-center pb-5">
-              <h2 className="text-2xl sm:text-[2rem] font-bold">
+              <h2 className="text-2xl sm:text-[2rem] font-bold text-slate-100">
                 Welcome back!
               </h2>
-              <p className="m-0 p-0 text-sm sm:text-base text-gray-700">
+              <p className="m-0 p-0 text-sm sm:text-base text-slate-300">
                 Don't have an account ?{" "}
-                <Link href="./sign-up" className="text-red-500">
-                  Sign in
+                <Link href="./sign-up" className="text-red-400">
+                  Sign up
                 </Link>
               </p>
             </div>
@@ -118,7 +118,7 @@ const SignIn = () => {
               </div>
               <button
                 type="submit"
-                className="bg-[#8c6bec] hover:bg-[#8061db] px-5 py-3 w-full rounded-[7px] text-white mt-5 text-md sm:text-lg"
+                className="bg-[#7770e0] hover:bg-[#635cc4] px-5 py-3 w-full rounded-[7px] text-white mt-5 text-md sm:text-lg"
               >
                 Log in
               </button>
