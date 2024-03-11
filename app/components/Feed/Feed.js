@@ -14,21 +14,24 @@ import Link from "next/link";
 import { RiEditBoxFill } from "react-icons/ri";
 import { MdDelete } from "react-icons/md";
 import BlogForm from "../Form/BlogForm";
+import noImage from "../../../public/assets/no-image.png"
 
 const Feed = () => {
   const { data: session } = useSession();
   const [searchText, setSearchText] = useState('');
   const [category, setCategory] = useState('');
-  const [isOpen, setIsOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [blogDataToEdit, setBlogDataToEdit] = useState(null);
 
-  const closeModal = () => setIsOpen(false);
+  const closeModal = () => setOpen(false);
 
   const handleSearch = (text) => {
     setSearchText(text);
   };
 
-  const openEditModal = () => {
-    setIsOpen(true);
+  const openEditModal = (blogData) => {
+    setOpen(true);
+    setBlogDataToEdit(blogData);
   }
 
   const handleCategorySelect = (text) => {
@@ -49,6 +52,8 @@ const Feed = () => {
   });
 
   if (isError) return <p>Error Occured..!!</p>;
+
+  console.log("BlogData:", data, blogDataToEdit);
 
 
 //=====================JSX Starts====================
@@ -74,7 +79,7 @@ const Feed = () => {
               >
                 <div className="image md:w-64 w-full">
                   <Image
-                    src={item?.blogImage}
+                    src={item?.blogImage ? item?.blogImage : noImage}
                     width={250}
                     height={250}
                     alt="blog-image"
@@ -96,11 +101,11 @@ const Feed = () => {
                     <div className="post-info flex gap-5">
                       <div className="flex items-center justify-center gap-1">
                         {/* <FaHeart className="text-2xl text-red-400 hover:text-red-600 transition-colors duration-50 ease-in-out cursor-pointer" /> */}
-                        <RiEditBoxFill onClick={openEditModal} className="text-2xl text-[#7f77e9] hover:text-[#6962c8] transition-colors duration-50 ease-in-out cursor-pointer" />
+                        <RiEditBoxFill onClick={()=> openEditModal(item)} className="text-2xl text-[#7f77e9] hover:text-[#6962c8] transition-colors duration-50 ease-in-out cursor-pointer" />
                         <MdDelete className="text-[25px] text-[#7f77e9] hover:text-[#6962c8] transition-colors duration-50 ease-in-out cursor-pointer" />
                       </div>
                      
-                      <BlogForm open={isOpen} editModal={true} closeModal={closeModal} />
+                      <BlogForm open={open} editModal={true} closeModal={closeModal} blogData={blogDataToEdit} />
                     </div>
                   </div>
                 </div>

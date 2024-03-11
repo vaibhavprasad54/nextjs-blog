@@ -3,6 +3,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import { Toaster } from "@/components/ui/toaster";
 import { AuthProvider, TanstackProvider } from "./Providers";
+import { SessionProvider } from "./SessionContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,7 +19,9 @@ export default function RootLayout({ children }) {
         <AuthProvider>
           <TanstackProvider>    
               {/* <Nav /> */}
-              {children}     
+              <SessionProvider>
+                 {children}
+              </SessionProvider>     
           </TanstackProvider>
         </AuthProvider>
         <Toaster />

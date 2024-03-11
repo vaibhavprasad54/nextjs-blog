@@ -7,10 +7,10 @@ import BlogForm from "../Form/BlogForm";
 
 const Header = ({ onSearch, onCategorySelect }) => {
 
-    const [isOpen, setIsOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
-    const handleOpenModal = () => setIsOpen(true);
-    const closeModal = () => setIsOpen(false);
+    const handleOpenModal = () => setOpen(true);
+    const closeModal = () => setOpen(false);
 
     const handleInputChange = (e) => {
         const text = e.target.value;
@@ -54,7 +54,7 @@ const Header = ({ onSearch, onCategorySelect }) => {
         </div>
         <div>
           <CreateBtn handleOpenModal={handleOpenModal}/>
-          <BlogForm open={isOpen} editModal={false} closeModal={closeModal} />
+          <BlogForm open={open} editModal={false} closeModal={closeModal} />
         </div>
       </div>
       

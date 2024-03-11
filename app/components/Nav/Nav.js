@@ -25,13 +25,15 @@ import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react"; 
 import Link from "next/link";
 import { FaSun } from "react-icons/fa6";
+import { useSessionContext } from "@/app/SessionContext";
 
 const Nav = () => {
 
   const {data: session} = useSession();
   const [theme, setTheme] = useState("light");
+  const{ session: newSession } = useSessionContext();
 
-  console.log("Session Data:", session);
+  console.log("Session Data:", newSession);
 
   const openMobileMenu = () => {
     document.querySelector(".ham-icon").style.display = "none";
@@ -74,16 +76,18 @@ const Nav = () => {
         <div className="items-center hidden lg:flex">
         <DropdownMenu className="cursor-pointer -mt-5 ">
             <DropdownMenuTrigger className="user-info flex items-center justify-start gap-3 cursor-pointer outline-none">
-              <Image src={userImage} alt="image" className="w-9 h-9" />
+              <Image src={newSession == null ? userImage : newSession?.user?.userImage} alt="image" width={50} height={50} className="w-9 h-9" />
               <p className="text-xl font-semibold text-slate-100"> {session?.user?.userName} </p>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="ml-4 w-44">
               {/* <DropdownMenuLabel>My Account</DropdownMenuLabel>
               <DropdownMenuSeparator /> */}
-               <DropdownMenuItem onClick={() => signOut()} className="group cursor-pointer text-md py-1 flex items-center justify-between">
-                <p className="m-0">Account Details</p>
-                <IoMdSettings className="w-5 h-5 group-hover:-rotate-45" />
-              </DropdownMenuItem>
+               {/* <DropdownMenuItem className="group cursor-pointer text-md py-1">
+                <Link href="/account" className="w-full flex items-center justify-between">
+                  <p className="m-0">Account Details</p>
+                  <IoMdSettings className="w-5 h-5 group-hover:-rotate-45" />
+                </Link>
+              </DropdownMenuItem> */}
               <DropdownMenuItem onClick={() => signOut()} className="cursor-pointer text-md py-1 flex items-center justify-between">
                 <p className="m-0">Log out</p>
                 <IoPowerSharp className="w-[1.1rem] h-[1.1rem]" />
