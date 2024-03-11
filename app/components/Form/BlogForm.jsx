@@ -85,7 +85,11 @@ const BlogForm = ({ open, setOpen, closeModal, editModal, blogData }) => {
   },
     onSuccess: () => {
       setValue("blogTitle", "");
-        setValue("blogDesc", "");
+      setValue("blogDesc", "");
+      setValue("blogCategory", "");
+      setValue("blogCategory", "");
+      setImageFile("");
+      setUnBaseImg(null);
         closeModal();
         toast({
           title: editModal ? "Blog updated successfully" : "Blog created successfully",
@@ -97,7 +101,6 @@ const BlogForm = ({ open, setOpen, closeModal, editModal, blogData }) => {
         setBtnClicked(false);
     },
     onError: () => {
-        console.log("Error:",error);
         toast({
           title: editModal ? "Error while updating blog!" : 'Error while creating blog!',
           description: "Try again...",
@@ -133,6 +136,7 @@ const BlogForm = ({ open, setOpen, closeModal, editModal, blogData }) => {
       const fileReader = new FileReader();
       fileReader.readAsDataURL(file);
       fileReader.onload = () => {
+        setUnBaseImg(fileReader.result);
         resolve(fileReader.result);
       };
       fileReader.onerror = (error) => {
@@ -221,15 +225,15 @@ const BlogForm = ({ open, setOpen, closeModal, editModal, blogData }) => {
                     type="file"
                     name="blogImage"
                     {...register("blogImage")}
-                    onChange={(e) => {handleImageUpload(e); setUnBaseImg(e)}}
+                    onChange={(e) => handleImageUpload(e)}
                     className={`outline-none bg-[#1b1b1f] text-md py-3 my-2 font-semibold px-5 w-full rounded-[7px] border-[1px] border-[#7770e02f] ${blogData?.blogImage && imageFile == null ? 'text-[#1b1b1f]' : imageFile !== '' ? 'text-slate-400' : 'text-[#1b1b1f]'}`}
                     
                   />
-                   {/* {imageFile || blogData?.blogImage && (  */}
+               
                     <div className="h-36">
                       <Image src={unBaseImg !== null ? unBaseImg : blogData?.blogImage} width={150} height={150} alt="blog-image" className=" w-72 object-contain rounded-md mt-2" />
                     </div>
-                  {/* // )} */}
+                   
                 </div>
               </div>
             </DialogDescription>
