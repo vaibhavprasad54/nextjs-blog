@@ -12,9 +12,14 @@ import axios from "axios";
 const SignUp = () => {
 
   const router = useRouter();
-  // const session = await getServerSession(authOptions);
 
   const [userExists, setUserExists] = useState("");
+  const [passwordState, setPasswordState] = useState("password");
+
+
+  const toggleViewPassword = () => {
+    setPasswordState(prevState => prevState === 'password' ? 'text' : 'password');
+  }
 
   const { register, handleSubmit, watch, formState: { errors }, } = useForm({
     userName: "",
@@ -110,13 +115,13 @@ const SignUp = () => {
               </div>
               <div className="password relative w-full">
               <input
-                type="password"
+                type={passwordState}
                 name="password"
                 placeholder="Enter password"
                 {...register("password", {required: 'This is required'})}
                 className="bg-slate-200 text-md sm:text-lg rounded-[7px] py-3 px-5 w-full"
               />
-              <IoEye className="text-2xl text-gray-600 absolute top-[0.85rem] right-3 cursor-pointer hover:text-gray-800" />
+              <IoEye onClick={toggleViewPassword} className="text-2xl text-gray-600 absolute top-[0.85rem] right-3 cursor-pointer hover:text-gray-800" />
               <p className="text-red-600 ">{errors.password?.message}</p>
               {userExists && (
                   <p className="absolute top-[4rem] m-0 text-red-600">{userExists}</p>
