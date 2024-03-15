@@ -8,6 +8,8 @@ import BlogForm from "../Form/BlogForm";
 const Header = ({ onSearch, onCategorySelect }) => {
 
   const [open, setOpen] = useState(false);
+  const [searchInput, setSearchInput] = useState("");
+  const [blogCategory, setBlogCategory] = useState("");
 
     const handleOpenModal = () => setOpen(true);
     const closeModal = () => setOpen(false);
@@ -64,9 +66,9 @@ const Header = ({ onSearch, onCategorySelect }) => {
           <p className="text-lg flex font-bold text-[#7770e0] cursor-pointer hover:text-gray-600">
             Latest <span className="hidden sm:flex pl-2">Article</span>
           </p>
-          <p className="text-base font-bold text-gray-400 cursor-pointer hover:text-gray-600">
+          {/* <p className="text-base font-bold text-gray-400 cursor-pointer hover:text-gray-600">
             Most Likes
-          </p>
+          </p> */}
         </div>
         <div className="category-selector">
           <Select onValueChange={(value) => handleCategorySelect(value)}>

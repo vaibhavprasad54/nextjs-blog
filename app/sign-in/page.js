@@ -13,7 +13,12 @@ import { signIn } from "next-auth/react";
 const SignIn = () => {
 
   const router = useRouter();
-  const [credError, setCredError] = useState("")
+  const [credError, setCredError] = useState("");
+  const [passwordState, setPasswordState] = useState("password");
+
+  const toggleViewPassword = () => {
+    setPasswordState(prevState => prevState === 'password' ? 'text' : 'password');
+  }
 
   const {
     register,
@@ -56,28 +61,30 @@ const SignIn = () => {
 
   return (
     <div className="login-section w-full flex items-center justify-center">
-      <div className="left-bg w-full sm:w-1/2 bg-[#7770e0] sm:h-screen h-[60rem] z-0"></div>
-      <div className="right-bg w-full hidden sm:flex sm:w-1/2 bg-[#0a0a0c] sm:h-screen h-[60rem] z-0"></div>
+      <div className="left-bg w-full sm:w-1/2 bg-[#7770e0] sm:h-screen h-[48rem] z-0"></div>
+      <div className="right-bg w-full hidden sm:flex sm:w-1/2 bg-[#0a0a0c] sm:h-screen h-[48rem] z-0"></div>
 
-      <div className="login-container sm:w-4/5 absolute bg-white bg-opacity-15 z-50 rounded-[20px] shadow-lg flex flex-col sm:flex-row items-center justify-center mx-4 max-w-5xl">
+      <div className="login-container sm:w-4/5 absolute bg-white bg-opacity-5 z-50 rounded-[20px] shadow-xl flex flex-col sm:flex-row items-center justify-center mx-4 max-w-5xl pt-2 pb-0">
         <div className="animation-section sm:w-1/2 flex flex-col items-start justify-center gap-10 rounded-l-[15px] p-10 relative">
-          <div className="circle absolute bg-[#7770e0] opacity-75 w-20 h-20 rounded-full -top-16"></div>
-          <div className="triangle absolute bg-[#7770e0] opacity-75 w-8 h-8 rounded-full top-32 right-32"></div>
-          <div className="triangle absolute bg-[#7770e0] opacity-75 w-8 h-8 rounded-full top-72 left-48"></div>
+          <div className="circle absolute bg-[#736cda] opacity-75 w-16 h-16 sm:w-20 sm:h-20 rounded-full -top-14 sm:-top-16"></div>
+          <div className="triangle absolute hidden sm:flex bg-[#7770e0] opacity-75 w-8 h-8 rounded-full top-32 right-32"></div>
+          <div className="triangle absolute hidden sm:flex bg-[#746ddb] opacity-75 w-8 h-8 rounded-full top-72 left-48"></div>
           <div className="text-area">
-            <h2 className="text-2xl sm:text-3xl font-bold text-white">
-              Scribble your thoughts <br /> on web!
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-800">
+              Hey, we've missed your <br /> writings!
             </h2>
-            <p className="text-slate-200 pt-2 text-base sm:text-lg">
-              Start writing today and get global
+            <div className="flex flex-row sm:flex-col gap-5">
+            <p className="text-gray-700 pt-2 text-base sm:text-lg">
+              Hop on now and continue...
             </p>
+            <div className="animated-icon">
+            <Image src={rocket} className="w-12 sm:w-20" alt="sample" />
           </div>
-          <div className="animated-icon">
-            <Image src={rocket} className="w-14 sm:w-24" alt="sample" />
+            </div>
           </div>
         </div>
 
-        <div className="login-area sm:w-1/2 bg-[#1b1b1f] rounded-r-[15px] opacity-90 p-3 sm:p-10 mb-4 sm:mb-0">
+        <div className="login-area sm:w-1/2 w-full bg-[#17171a] rounded-b-[15px] sm:rounded-r-[15px] opacity-90 p-3 sm:p-10 mb-0">
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="flex flex-col items-center justify-center p-10"
@@ -88,7 +95,7 @@ const SignIn = () => {
               </h2>
               <p className="m-0 p-0 text-sm sm:text-base text-slate-300">
                 Don't have an account ?{" "}
-                <Link href="./sign-up" className="text-red-400">
+                <Link href="./sign-up" className="text-[#7e77e8]">
                   Sign up
                 </Link>
               </p>
@@ -105,12 +112,12 @@ const SignIn = () => {
               </div>
               <div className="password relative w-full">
                 <input
-                  type="password"
+                  type={passwordState}
                   placeholder="Enter password"
                   {...register("password", { required: "This is required" })}
                   className="bg-slate-200 text-md sm:text-lg rounded-[7px] py-3 px-5 w-full"
                 />
-                <IoEye className="text-2xl text-gray-600 absolute top-[0.85rem] right-3 cursor-pointer hover:text-gray-800" />
+                <IoEye onClick={toggleViewPassword} className="text-2xl text-gray-600 absolute top-[0.85rem] right-3 cursor-pointer hover:text-gray-800" />
                 <p className="text-red-600">{errors.password?.message}</p>
                 {credError && (
                   <p className="absolute top-[3.6rem] m-0 text-sm text-white bg-[#d60303] rounded-[5px] px-2 py-1 ">{credError}</p>

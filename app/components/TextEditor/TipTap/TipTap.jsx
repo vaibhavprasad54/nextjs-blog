@@ -11,7 +11,7 @@ const TipTap = ({ onChange, data }) => {
         content: data ? data : '',
         editorProps: {
             attributes: {
-                class: "outline-none bg-[#1b1b1f] text-slate-300 text-base sm:text-lg py-3 my-2 font-semibold px-5 w-full h-40 rounded-[7px] border-[1px] border-[#7770e02f]"
+                class: "outline-none bg-[#1b1b1f] text-slate-300 text-base sm:text-lg py-3 my-2 font-semibold px-5 w-full h-40 overflow-y-auto rounded-[7px] border-[1px] border-[#7770e02f] text-left"
             },
         },
         onUpdate({ editor }){

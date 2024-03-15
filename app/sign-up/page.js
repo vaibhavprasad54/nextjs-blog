@@ -8,12 +8,8 @@ import { IoEye } from "react-icons/io5";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import axios from "axios";
-import { getServerSession } from "next-auth";
-import { redirect } from "next/navigation";
-// import { authOptions } from "../../api/auth/[...nextauth]/route";
 
-
-const SignUp = async() => {
+const SignUp = () => {
 
   const router = useRouter();
   // const session = await getServerSession(authOptions);
@@ -58,28 +54,31 @@ const SignUp = async() => {
 
   return (
     <div className="login-section w-full flex items-center justify-center">
-      <div className="left-bg w-full sm:w-1/2 bg-blue-800 sm:h-screen h-[60rem] z-0"></div>
-      <div className="right-bg w-full hidden sm:flex sm:w-1/2 bg-[#0a0a0c] sm:h-screen h-[60rem] z-0"></div>
+      <div className="left-bg w-full sm:w-1/2 bg-[#7770e0] sm:h-screen h-[48rem] z-0"></div>
+      <div className="right-bg w-full hidden sm:flex sm:w-1/2 bg-[#0a0a0c] sm:h-screen h-auto z-0"></div>
 
-      <div className="login-container sm:w-4/5 absolute bg-white bg-opacity-10 z-50 rounded-[20px] shadow-lg flex flex-col sm:flex-row items-center justify-center mx-4 max-w-5xl">
-        <div className="animation-section sm:w-1/2 flex flex-col items-start justify-center gap-10 rounded-l-[15px] p-10 relative">
-          <div className="circle absolute bg-blue-800 opacity-75 w-20 h-20 rounded-full -top-16"></div>
-          <div className="triangle absolute bg-blue-800 opacity-75 w-8 h-8 rounded-full top-32 right-32"></div>
-          <div className="triangle absolute bg-blue-800 opacity-75 w-8 h-8 rounded-full top-72 left-48"></div>
+      <div className="login-container sm:w-4/5 absolute bg-white bg-opacity-5 z-50 rounded-[20px] shadow-lg flex flex-col sm:flex-row items-center justify-center mx-4 max-w-5xl">
+        <div className="animation-section sm:w-1/2 flex flex-col items-start justify-center gap-7 rounded-l-[15px] p-7 relative">
+          <div className="circle absolute bg-[#736cda] opacity-75 w-16 h-16 sm:w-20 sm:h-20 rounded-full -top-12 sm:-top-16"></div>
+          <div className="triangle absolute hidden sm:flex bg-[#7770e0] opacity-75 w-8 h-8 rounded-full top-32 right-32"></div>
+          <div className="triangle absolute hidden sm:flex bg-[#746ddb] opacity-75 w-8 h-8 rounded-full top-72 left-48"></div>
           <div className="text-area">
-            <h2 className="text-2xl sm:text-3xl font-bold text-white">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-800">
               Scribble your thoughts <br /> on web!
             </h2>
-            <p className="text-slate-200 pt-2 text-base sm:text-lg">
+            <div className="flex flex-row sm:flex-col gap-5">
+            <p className="text-gray-700 pt-2 text-base sm:text-lg">
               Start writing today and get global
             </p>
+            <div className="animated-icon">
+            <Image src={rocket} className="w-12 sm:w-20" alt="sample" />
           </div>
-          <div className="animated-icon">
-            <Image src={rocket} className="w-14 sm:w-24" alt="sample" />
+            </div>
           </div>
+          
         </div>
 
-        <div className="login-area sm:w-1/2 bg-[#1b1b1f] sm:rounded-r-[15px] opacity-90 p-3 sm:p-10 mb-4 sm:mb-0">
+        <div className="login-area sm:w-1/2 w-full bg-[#17171a] rounded-b-[15px] sm:rounded-r-[15px] opacity-90 p-3 sm:p-10 mb-0">
           <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col items-center justify-center p-10">
             <div className="form-header text-center pb-5">
               <h2 className="text-2xl sm:text-[2rem] font-bold text-slate-100">Get Started</h2>

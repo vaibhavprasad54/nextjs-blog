@@ -4,14 +4,9 @@ import Image from "next/image";
 import React, { useContext, useState } from "react";
 import logo from "../../../public/assets/logo.png";
 import userImage from "../../../public/assets/man.png";
-import { IoMdHome } from "react-icons/io";
-import { CiGrid41 } from "react-icons/ci";
-import { GoBellFill } from "react-icons/go";
-import { IoMoon, IoSettingsSharp } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoMdClose } from "react-icons/io";
 import { IoMdSettings } from "react-icons/io";
-import { BsFillMoonStarsFill } from "react-icons/bs";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -24,7 +19,6 @@ import { IoPowerSharp } from "react-icons/io5";
 import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react"; 
 import Link from "next/link";
-import { FaSun } from "react-icons/fa6";
 import { useSessionContext } from "@/app/SessionContext";
 
 const Nav = () => {
@@ -77,32 +71,16 @@ const Nav = () => {
         <DropdownMenu className="cursor-pointer -mt-5 ">
             <DropdownMenuTrigger className="user-info flex items-center justify-start gap-3 cursor-pointer outline-none">
               <Image src={newSession == null ? userImage : newSession?.user?.userImage} alt="image" width={50} height={50} className="w-9 h-9" />
-              <p className="text-xl font-semibold text-slate-100"> {session?.user?.userName} </p>
+              <p className="text-xl font-semibold text-slate-100">Hi, {session?.user?.userName} </p>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="ml-4 w-44">
-              {/* <DropdownMenuLabel>My Account</DropdownMenuLabel>
-              <DropdownMenuSeparator /> */}
-               {/* <DropdownMenuItem className="group cursor-pointer text-md py-1">
-                <Link href="/account" className="w-full flex items-center justify-between">
-                  <p className="m-0">Account Details</p>
-                  <IoMdSettings className="w-5 h-5 group-hover:-rotate-45" />
-                </Link>
-              </DropdownMenuItem> */}
-              <DropdownMenuItem onClick={() => signOut()} className="cursor-pointer text-md py-1 flex items-center justify-between">
+            <DropdownMenuContent className="ml-4 h-9">
+              <DropdownMenuItem onClick={() => signOut()} className="cursor-pointer text-md py-1 flex items-center justify-between ">
                 <p className="m-0">Log out</p>
                 <IoPowerSharp className="w-[1.1rem] h-[1.1rem]" />
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
-
-        {/* <div className="hidden md:flex dark-mode-btn cursor-pointer" onClick={changeTheme}>
-          <div className={`btn-background relative flex items-center justify-between px-1 w-12 h-6 rounded-[20px] shadow-md ${theme == "dark" ? 'bg-slate-800' : 'bg-orange-400'}`}>
-            <div className={`btn-ball w-4 h-4 rounded-full bg-white ${theme == "dark" ? 'ml-6' : 'ml-0'}`}></div>
-            {theme == "light" && <FaSun className="text-white text-xs mr-1" />}
-            {theme == "dark" && <BsFillMoonStarsFill className="text-white text-xs ml-1 absolute top-[6px]" />}
-          </div>
-        </div> */}
         </div>
 
         <div className="hamburger-menu flex lg:hidden">
@@ -115,35 +93,23 @@ const Nav = () => {
             onClick={closeMobileMenu}
           />
         </div>
-        <div className="menu-mobile flex flex-col items-start justify-between absolute top-14 -right-60 rounded-[8px] bg-[#1b1b1f] shadow-lg z-50 h-[40rem] py-5 px-10 w-60 pb-10">
+        <div className="menu-mobile flex flex-col items-start justify-between absolute top-16 -right-60 rounded-[8px] bg-[#1b1b1f] shadow-lg z-50 h-[40rem] py-5 px-10 w-60 pb-10">
 
           <DropdownMenu className="cursor-pointer -mt-5">
             <DropdownMenuTrigger className="user-info flex items-center justify-start gap-3 cursor-pointer outline-none">
               <Image src={userImage} alt="image" className="w-11 h-11" />
-              <p className="text-xl font-semibold text-slate-100"> {session?.user?.userName} </p>
+              <p className="text-xl font-semibold text-slate-100">Hi, {session?.user?.userName} </p>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="ml-[7rem] -mt-3">
+            <DropdownMenuContent className="ml-[7rem] -mt-1 h-9 ">
               {/* <DropdownMenuLabel>My Account</DropdownMenuLabel>
               <DropdownMenuSeparator /> */}
-              <DropdownMenuItem onClick={() => signOut()} className="cursor-pointer text-md py-1 flex items-center justify-between">
+              <DropdownMenuItem onClick={() => signOut()} className="cursor-pointer text-md py-1 -mt-1 flex items-center justify-between ">
                 <p className="m-0">Log out</p>
-                <IoPowerSharp className="w-5 h-5" />
+                <IoPowerSharp className="w-[18px] h-[18px] mt-[2px]" />
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
           
-          {/* <div className="flex dark-mode-btn cursor-pointer" onClick={changeTheme}>
-          <div className={`btn-background relative flex items-center justify-between px-1 w-12 h-6 rounded-[20px] shadow-md ${theme == "dark" ? 'bg-slate-800' : 'bg-orange-400'}`}>
-            <div className={`btn-ball w-4 h-4 rounded-full bg-white ${theme == "dark" ? 'ml-6' : 'ml-0'}`}></div>
-            {theme == "light" && <FaSun className="text-white text-xs mr-1" />}
-            {theme == "dark" && <BsFillMoonStarsFill className="text-white text-xs ml-1 absolute top-[6px]" />}
-          </div>
-        </div> */}
-
-          {/* <div className="user-info flex items-center justify-start gap-3 cursor-pointer">
-            <Image src={userImage} alt="image" className="w-11 h-11" />
-            <p className="text-xl font-semibold text-[#23528e]">Vaibhav</p>
-          </div> */}
         </div>
       </div>
     </nav>
