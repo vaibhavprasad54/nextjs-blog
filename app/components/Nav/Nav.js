@@ -23,6 +23,7 @@ import { useSessionContext } from "@/app/SessionContext";
 
 const Nav = () => {
 
+  const [showNav, setShowNav] = useState(false);
   const {data: session} = useSession();
   const [theme, setTheme] = useState("light");
   const{ session: newSession } = useSessionContext();
@@ -32,15 +33,17 @@ const Nav = () => {
   const openMobileMenu = () => {
     document.querySelector(".ham-icon").style.display = "none";
     document.querySelector(".close-icon").style.display = "flex";
-    document.querySelector(".menu-mobile").style.right = "1rem";
-    document.querySelector(".menu-mobile").style.transition = "all 0.3s ease";
+    // document.querySelector(".menu-mobile").style.right = "1rem";
+    // document.querySelector(".menu-mobile").style.transition = "all 0.3s ease";
+    setShowNav(true);
   };
 
   const closeMobileMenu = () => {
     document.querySelector(".close-icon").style.display = "none";
     document.querySelector(".ham-icon").style.display = "flex";
-    document.querySelector(".menu-mobile").style.right = "-15rem";
-    document.querySelector(".menu-mobile").style.transition = "all 0.3s ease";
+    // document.querySelector(".menu-mobile").style.right = "-15rem";
+    // document.querySelector(".menu-mobile").style.transition = "all 0.3s ease";
+    setShowNav(false);
   };
 
   const changeTheme = () => {
@@ -93,12 +96,13 @@ const Nav = () => {
             onClick={closeMobileMenu}
           />
         </div>
-        <div className="menu-mobile flex flex-col items-start justify-between absolute top-16 -right-60 rounded-[8px] bg-[#1b1b1f] shadow-lg z-50 h-[40rem] py-5 px-10 w-60 pb-10">
+        {showNav && (
+          <div className="menu-mobile flex lg:hidden flex-col items-start justify-between absolute top-16 right-2 rounded-[8px] bg-[#1b1b1f] shadow-lg z-50 h-[40rem] py-5 px-10 w-60 pb-10 transition-all">
 
           <DropdownMenu className="cursor-pointer -mt-5">
             <DropdownMenuTrigger className="user-info flex items-center justify-start gap-3 cursor-pointer outline-none">
               <Image src={userImage} alt="image" className="w-11 h-11" />
-              <p className="text-xl font-semibold text-slate-100">Hi, {session?.user?.userName} </p>
+              <p className="text-xl font-semibold text-slate-100 text-left">Hi, {session?.user?.userName} </p>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="ml-[7rem] -mt-1 h-9 ">
               {/* <DropdownMenuLabel>My Account</DropdownMenuLabel>
@@ -111,6 +115,7 @@ const Nav = () => {
           </DropdownMenu>
           
         </div>
+        )}
       </div>
     </nav>
   );
